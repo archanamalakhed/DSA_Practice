@@ -1,0 +1,18 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect,Page
+
+
+def test_example(page:Page) ->None:
+    page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    page.get_by_role("textbox", name="Username").click()
+    page.get_by_role("textbox", name="Username").press("CapsLock")
+    page.get_by_role("textbox", name="Username").fill("A")
+    page.get_by_role("textbox", name="Username").press("CapsLock")
+    page.get_by_role("textbox", name="Username").fill("Admin")
+    page.get_by_role("textbox", name="Password").click()
+    page.get_by_role("textbox", name="Password").fill("admin123")
+    page.get_by_role("button", name="Login").click()
+    expect(page.get_by_role("textbox",name="Username")).to_be_visible()
+
+  
+ 
